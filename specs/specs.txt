@@ -1,0 +1,177 @@
+Front page:
+
+Should have the option to login in the main page
+for login: email and password will be required to login.
+
+
+
+Has to have a buttom to register
+
+
+Register page:
+in this section the user can craete a business account
+
+payload: 
+
+user={"userName":"test","password":"123","email":"test@hotmail.com"}
+
+
+for address also add in the payload the lat and lng
+
+business={"name":"Business 123","email":"test@hotmail.com","address":"49 north steyne","fromUserID":"1"}
+
+
+
+
+Login page:
+
+
+
+payload:
+
+{"password":"123","email":"user123@hotmail.com"}
+
+
+userName should not be part of the payload to login
+
+
+
+
+Admin Panel
+
+STORE:
+
+Store --> This section is used to create/modify a store.
+A business can have muiltiple Stores.
+Each store will contain the next attributes: 
+
+
+Create a mew store: 
+
+store name (name)
+business id (businessID)  : association between store and business (not sure if it makes sense to keep the businessID associated to the store as we might always have 1 business)
+store email (email) : could be the same as the business email
+store address (address) : add a auto-complete address in the form and when sending the data to the end-point calculate the lat/lng based on that
+user id (fromUserID) : user who created the store
+store category/ies (storeCategory  [] ) : the form has to have a series of boxes to select multiple categories (Fitness, Food, Restaurant, etc)
+store website address (storeWebsite) : address of the website
+
+
+
+create store payload = 
+
+store={"name":"Manly Gym", "businessID":"1", "email":"manlyfitness@hotmail.com","address":"201 north steyne",
+    "fromUserID":"1","storeCategory":"[\"Fitness\", \"Outdoor\"]","storeWebsite":"www.manly_fitness_club.com.au", "lat":"-33.797976", "lng":"151.285290"}
+
+
+
+Modify a Store:
+
+Once the sotre is created, it has to be displayed in the Store section (1 store per line), next to each item we can modify its content  by clicking in a buttom
+
+modify store payload = 
+
+Attributes are the same as when creating the store
+
+store={"name":"Manly Gym", "businessID":"1", "email":"manlyfitness@hotmail.com","address":"201 north steyne",
+    "fromUserID":"1","storeCategory":"[\"Fitness\", \"Outdoor\"]","storeWebsite":"www.manly_fitness_club.com.au", "lat":"-33.797976", "lng":"151.285290"}
+
+
+
+
+PRODUCTS:
+
+Users can create products. Once the product is created, an user can associate the product to a store and select its quantity and price 
+(by linking the product to the store)
+
+
+products association to a store page.
+
+products are associated to a specific store (including its qty)
+
+Note: at the moment the end-point creates a product and associates it to a store and it quantity
+
+
+
+Create a new item: current payload to creat ea product with qty price and association
+
+item={ "name":"Beer 4 pines pale ale", "description":"best beer!", "price":"8.50","itemCategory":"[\"beer\"]","fromUserID":"1","currencyType":"AUD","storeID":"1"}
+
+product name (name) : name of the product has to be unique 
+product description (description) : Description of the product
+product price (price) : price of the product
+product category (itemCategory) : category associated to the product. e.g. beer, sport, lunch, etc. It is used to serve as filters when searching for products.
+user ID (fromUserID) : The user who created the product
+currency (currencyType) : currency associated to the product price. The currency is used to be displayed in the App. Eventually it should be dynamic based on the user;s preferences and automatically converted to the users currency selected
+store ID (storeID) : ID of the store associated to the product. 
+
+PROMOTIONS:
+
+There are two types of promotions: 
+ Normal: users can buy straight away products and collect them. There is no time window. Stores should publish items with a already market disccount into consideration (motivates users to consume via the app and use the app)
+
+When user clicks on Promotions/Offers (tbc) the user has to select the store and then all the items associated to that store will be displayed
+then the user can select an item and create the offer for that item assocaited to that store.
+
+
+
+ Bulk: This is a type of offer. Business decide how many units want to sell in bulk and how much discounts they want to apply based on qty of users subscribed to the offer
+ The offer has expiration time to join. Once the time is completed, users can go and collect/consume the product/service. The final price will be re-calculated
+ at the end of the offer. The initial price should also contain a initial discount compared to the market/normal offfer/type of sale.
+
+payload for Bulk offers:
+
+
+offer type (offerType) : Can be Normal/Bulk - if  it is bulk then a set of other parameters will be rquired (disccount x qty, time window for offer)
+offer name (name) : name of the offer. This will be displayed in the app when clicking the store on the map.
+offer description (description) : offer descrption, it will be displaed when selecting the offer in the app.
+item id (itemID) : this is the item ID associated to the offer
+item price (itemPrice) : price of the item. It has to be captured when creating the offer. At the moment is being sent as part of the payload but it should be capture in the back end?
+qty of items on sale (qty) : quantity of items on sale 
+qty of items available (qtyAvailable) : quantity of items currently available for sale. When the offer is created, this number is = to qty. 
+initial offer discount (disccount) : initial discount for the bulk offer. Not sure if this makes sense as the initial discount should be based on the discountOptions element
+discount options (discountOptions []) : contains the different discount options based on the current number of people subscribe to the offer
+offer Start dateTime (offerStartDttm) : Date and time when the offer is oficially available for users to see in the app
+offer End dateTime (offerEndDttm) : Date and time when the offer is not avaialble anymore (expired)
+from user ID (fromUserID) : User who created the offer in the platform
+
+
+offer={"offerType":"Bulk", "name":"Beer promo 2 !!!", "description":"25 percent disccount for the first 40 buyers!",
+"itemID":"1","itemPrice":"8.9","qty":"45","qtyAvailable":"45","discount":"0.25",
+"discountOptions": [{"qtyFrom":"1","qtyTo":"19","discount":"0.10"},{"qtyFrom":"20","qtyTo":"45","discount":"0.25"}],
+"offerStartDttm":"2021-03-17 15:30:00","offerEndDttm":"2021-06-17 22:00:00","fromUserID":"1","storeID":"1"}
+
+
+payload for normal offers: 
+
+offer={"offerType":"Normal", "name":"Beer promo 2 !!!", "description":"25 percent disccount for the first 40 buyers!",
+"itemID":"1","itemPrice":"8.9","qty":"45","qtyAvailable":"45","discount":"0.25",
+"offerStartDttm":"2021-03-17 15:30:00","offerEndDttm":"2021-06-17 22:00:00","fromUserID":"1","storeID":"1"}
+
+
+
+
+
+
+
+
+
+
+
+ANALYTICS / DASHBOARDS
+
+Offer tracker
+
+Sales per store and per item within each store
+
+Users that belong to groups --> display size of groups based on user who consumed there etc.
+
+
+NOTIFICATIONS:
+
+Allow to send notifications to groups that want to recieve notifications with offers from different businesses/stores they like.
+
+
+
+
+

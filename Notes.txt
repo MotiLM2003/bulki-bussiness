@@ -1,0 +1,27 @@
+sudo npm install --global yarn
+
+
+Install the next libraries: 
+
+yarn add @material-ui/icons @material-ui/core recharts 
+
+yarn add  recharts
+yarn add axios
+
+
+
+Note: If you are going to create a new instance of the application, run yarn install to install the dependencies based on the dependencies.json file
+
+
+
+
+-- Login form tutorial https://www.youtube.com/watch?v=91qEdc6dSUs
+
+run to upgrade -->  npm install react-router-dom
+
+
+
+
+yarn add react-datetime-picker
+
+

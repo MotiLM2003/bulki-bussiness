@@ -1,0 +1,8 @@
+.businessPortal{
+    flex: 4;
+}
+
+.businessPortalWidgets{
+    display: flex;
+    margin: 20px;
+}

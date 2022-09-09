@@ -1,0 +1,39 @@
+.newOffer {
+  flex: 4;
+}
+
+.addOfferForm {
+  margin-top: 10px;
+}
+
+.addOfferItem {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.addOfferItem > label {
+  color: gray;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.addOfferItem > input {
+  padding: 10px;
+}
+
+.addOfferItem > select {
+  padding: 10px;
+}
+
+.addOfferButton {
+  margin-top: 10px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: darkblue;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}

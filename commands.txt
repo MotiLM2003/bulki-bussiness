@@ -1,0 +1,23 @@
+yarn add @material-ui/icons @material-ui/core recharts
+
+sudo yarn add @mui/icons-material
+
+
+npm install react
+
+yarn add react-scripts
+
+sudo yarn add axios
+
+sudo yarn add @reduxjs/toolkit
+
+sudo yarn add styled-components
+
+https://www.youtube.com/watch?v=aTPkos3LKi8
+
+
+
+Add extension = ES7 React/Redux/GraphQL/React-Native snippets
+
+
+sudo yarn add react-router-dom

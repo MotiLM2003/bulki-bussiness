@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bulb {
+  position: absolute;
+  top: -80px;
+  right: 130px;
+  width: 300px;
+  height: 300px;
+}
+
+font-lato {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.header-menu-item {
+  cursor: pointer;
+  position: relative;
+}
+
+.header-menu-item::before {
+  content: ' ';
+  position: absolute;
+  bottom: -5px;
+  border-bottom: 3px solid #f48168;
+  width: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.header-menu-item:hover::before {
+  width: 110%;
+  opacity: 1;
+}
+
+.element {
+  min-height: 100vh;
+}
+
+* {
+  outline: 0 !important;
+}
+*:focus {
+  outline: 0 !important;
+}
