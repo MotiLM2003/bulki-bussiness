@@ -1,4 +1,4 @@
-import "./sidebar.css";
+import './sidebar.css';
 import {
   LineStyle,
   Timeline,
@@ -12,95 +12,89 @@ import {
   ChatBubbleOutline,
   WorkOutline,
   Report,
-} from "@material-ui/icons";
-import { Link } from "react-router-dom";
+} from '@material-ui/icons';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
-    <div className="sidebar">
-      <div className="sidebarWrapper">
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Dashboard</h3>
-          <ul className="sidebarList">
-            <Link to="/" className="link">
-            <li className="sidebarListItem active">
-              <LineStyle className="sidebarIcon" />
-              Home
-            </li>
+    <div className='sidebar w-[100px]  md:w-[200px] max-w-[200px]'>
+      <div className='sidebarWrapper'>
+        <div className='sidebarMenu'>
+          <h3 className='sidebarTitle'>Dashboard</h3>
+          <ul className='sidebarList'>
+            <Link to='/' className='link'>
+              <li className='sidebarListItem active'>
+                <LineStyle className='sidebarIcon' />
+                Home
+              </li>
             </Link>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <Timeline className='sidebarIcon' />
               Analytics
             </li>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <TrendingUp className='sidebarIcon' />
               Sales
             </li>
           </ul>
         </div>
 
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Products & Campaigns</h3>
-          <ul className="sidebarList">
-
-            <Link to="/newProduct" className="link">
-              <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
+        <div className='sidebarMenu'>
+          <h3 className='sidebarTitle'>Products & Campaigns</h3>
+          <ul className='sidebarList'>
+            <Link to='/newProduct' className='link'>
+              <li className='sidebarListItem'>
+                <Storefront className='sidebarIcon' />
                 New Product
               </li>
             </Link>
 
-            <Link to="/products" className="link">
-              <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
+            <Link to='/products' className='link'>
+              <li className='sidebarListItem'>
+                <Storefront className='sidebarIcon' />
                 Products
               </li>
             </Link>
 
-            <Link to="/offers" className="link">
-              <li className="sidebarListItem">
-                <Storefront className="sidebarIcon" />
+            <Link to='/offers' className='link'>
+              <li className='sidebarListItem'>
+                <Storefront className='sidebarIcon' />
                 Offers
               </li>
             </Link>
-
-
           </ul>
         </div>
 
-
-
-
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Notifications</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <MailOutline className="sidebarIcon" />
+        <div className='sidebarMenu'>
+          <h3 className='sidebarTitle'>Notifications</h3>
+          <ul className='sidebarList'>
+            <li className='sidebarListItem'>
+              <MailOutline className='sidebarIcon' />
               Mail
             </li>
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <DynamicFeed className='sidebarIcon' />
               Feedback
             </li>
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <ChatBubbleOutline className='sidebarIcon' />
               Messages
             </li>
           </ul>
         </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <WorkOutline className="sidebarIcon" />
+        <div className='sidebarMenu'>
+          <h3 className='sidebarTitle'>Staff</h3>
+          <ul className='sidebarList'>
+            <li className='sidebarListItem'>
+              <WorkOutline className='sidebarIcon' />
               Manage
             </li>
-            <li className="sidebarListItem">
-              <Timeline className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <Timeline className='sidebarIcon' />
               Analytics
             </li>
-            <li className="sidebarListItem">
-              <Report className="sidebarIcon" />
+            <li className='sidebarListItem'>
+              <Report className='sidebarIcon' />
               Reports
             </li>
           </ul>

@@ -29,10 +29,12 @@ import Contact from './Contact';
 import Popup from '../../../components/Popup/Popup';
 import Input from '../../../components/Input/Input';
 import Login from '../../../components/Icons/Login';
+import Footer from '../../../components/Footer/Footer';
 
 const Landing = ({ onLogin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [details, SetDetails] = useState({ email: '', password: '' });
+  const [isLogin, setIsLogin] = useState(true);
   const onClose = () => setIsOpen(false);
 
   const onChange = (e) => {
@@ -75,7 +77,7 @@ const Landing = ({ onLogin }) => {
       <Element name='section-5' className='element'>
         <Contact />
       </Element>
-
+      <Footer />
       {/* <div className='position:relative opacity-[.3]'> <div className='bulb'>
           <Bulb />
   </div>/div> */}
@@ -135,8 +137,11 @@ const Landing = ({ onLogin }) => {
               </div>
               <div className='flex items-center justify-center'>
                 <button
-                  onClick={() => {
-                    onLogin(details);
+                  onClick={async () => {
+                    setIsLogin(true);
+                    const test = await onLogin(details);
+                    setIsLogin(test);
+                    console.log('test', test);
                   }}
                   className='grow bg-red-200 py-1 px-2 text-[.8em] min-w-[120px] max-w-[80%]  rounded cursor-pointer  hover:bg-red-500 transition duration-300 hover:shadow-lg '
                 >
@@ -144,6 +149,15 @@ const Landing = ({ onLogin }) => {
                     <p>Login</p>
                   </div>
                 </button>
+              </div>
+              <div className='flex items-center justify-center'>
+                <p
+                  className={`text-red-100 center text-center hide text-sm w-[80%] bg-red-600 rounded p-2 ${
+                    isLogin ? 'invisible' : ''
+                  }`}
+                >
+                  Login Faild!
+                </p>
               </div>
             </div>
           </ModalBody>

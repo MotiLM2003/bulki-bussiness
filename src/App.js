@@ -19,6 +19,7 @@ import api from './apis/userAPI';
 import BusinessPortal from './pages/businessPortal/BusinessPortal';
 import Landing from './pages/tests/landing/Landing';
 import { Link } from 'react-router-dom';
+import NewProductItem from './pages/newProduct/NewProductItem';
 
 function App() {
   //Add logic to pick up user profile when the user logs in and sends this to the main dashboard.
@@ -55,8 +56,7 @@ function App() {
     });
   }
 
-  const onLogin = (details) => {
-    console.log('testing');
+  const onLogin = async (details) => {
     var details = {
       'email': details.email,
       'password': details.password,
@@ -77,13 +77,16 @@ function App() {
         } else {
           console.log('Details do not match!');
         }
+
+        return true;
       } catch (err) {
         // Handle Error Here
         //console.error(err);
+        return false;
         console.log('something went wrong', err);
       }
     };
-    sendPostRequest();
+    return await sendPostRequest();
   };
 
   const Logout = () => {
@@ -92,7 +95,7 @@ function App() {
 
   return (
     <div className='App'>
-      {user?.user_email !== '' ? (
+      {!user ? (
         <Router>
           <Topbar Logout={Logout} user={user} />
           <div className='container'>
@@ -119,6 +122,10 @@ function App() {
               </Route>
               <Route path='/product/:productId'>
                 <Product />
+              </Route>
+
+              <Route path='/newProductItem'>
+                <NewProductItem user={user} />
               </Route>
 
               <Route path='/newProduct'>
