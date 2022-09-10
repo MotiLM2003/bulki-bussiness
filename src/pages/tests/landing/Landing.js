@@ -35,7 +35,10 @@ const Landing = ({ onLogin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [details, SetDetails] = useState({ email: '', password: '' });
   const [isLogin, setIsLogin] = useState(true);
-  const onClose = () => setIsOpen(false);
+  const onClose = () => {
+    setIsOpen(false);
+    setIsLogin(true);
+  };
 
   const onChange = (e) => {
     const name = e.target.name;
