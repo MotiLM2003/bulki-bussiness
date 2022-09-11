@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className='App'>
-      {!user ? (
+      {user ? (
         <Router>
           <Topbar Logout={Logout} user={user} />
           <div className='container'>

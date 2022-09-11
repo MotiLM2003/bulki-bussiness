@@ -54,3 +54,12 @@ font-lato {
 *:focus {
   outline: 0 !important;
 }
+
+.select-catagory select {
+  border-color: #f48168 !important;
+  outline: none !important;
+}
+
+.footer > div {
+  text-align: center;
+}
